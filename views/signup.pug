@@ -1,0 +1,25 @@
+extends layout
+  
+block content
+    h2.title
+      | Let's 
+      strong Get Connected
+    form(method='POST', action='/users/login')
+      #form-group
+        label Name:
+        input.form-control(name='name', type='text')
+      #form-group
+        label Email:
+        input.form-control(name='email', type='text')
+      #form-group
+        label Username:
+        input.form-control(name='username',type='text')
+      #form-group
+        label Password:
+        input.form-control(name='password',type='password')
+      #form-group
+        label Confirm:
+        input.form-control(name='password2',type='password')
+      br
+      input.btn.btn-primary(type='submit',value='Shoot')
+

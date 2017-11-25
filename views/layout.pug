@@ -1,45 +1,66 @@
 doctype html
 html
   head
-    title Knowledgebase
-    link(rel='stylesheet' href='bower_components/bootstrap/dist/css/bootstrap.css')
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=Edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name='keywords', content='')
+    meta(name='description', content='')
+    
+    title Abhijeeth Baregal
+    link(rel='stylesheet' href='/bower_components/bootstrap/dist/css/bootstrap.css')
     link(rel='stylesheet' href='/css/style.css')
+    link(rel='stylesheet', href='css/bootstrap.min.css')
+    link(rel='stylesheet', href='css/font-awesome.min.css')
+    link(rel='stylesheet', href='css/templatemo-style.css')
+    link(href='//fonts.googleapis.com/css?family=Raleway:400,300,600,700', rel='stylesheet', type='text/css')
+  
   body
-    nav.navbar.navbar-inverse
-      .container
-        .navbar-header
-          button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
-            span.sr-only Toggle navigation
-            span.icon-bar
-            span.icon-bar
-            span.icon-bar
-          a.navbar-brand(href='/') KnowledgeBase
+   navbar.navbar-default.bs-dos-nav.navbar.sticky-navigation(role='navigation')
+    .container
+      .navbar-header
+        button.navbar-toggle.collapsed(type='button', data-toggle='collapse', data-target='#navbar', aria-expanded='false', aria-controls='navbar')
+          span.sr-only Toggle navigation
+          span.icon.icon-bar
+          span.icon.icon-bar
+          span.icon.icon-bar
+        a.navbar-brand(href='/') My Profile
+      nav#rock-navigation.collapse.navbar-collapse
         #navbar.collapse.navbar-collapse
           ul.nav.navbar-nav
             li
-              a(href='/') Home
+              a.smoothScroll(href='/') Home
             if user
               li
-                a(href='/articles/add') Add Article
+                a.smoothScroll(href='/myprofile/add') Add Article
           ul.nav.navbar-nav.navbar-right
             if user
               li 
-                a(href='/users/logout') Logout
+                a.smoothScroll(href='/users/logout') Logout
             else
               li
-                a(href='/users/register') Register
+                a.smoothScroll(href='/users/signup') SignUp
               li
-                a(href='/users/login') Login
+                a.smoothScroll(href='/users/login') Login
     .container
-      != messages('my_message_template', locals)
+      != messages('message', locals)
       if errors
-        each error,i in errors
-          div(class= "alert alert-danger") #{error.msg}
+        each error, i in errors
+          div(class="alert alert-danger") #{error.msg}
       block content
       br
       hr
       footer
         p Copyright &copy; 2017
+        
+              a(rel='nofollow', href='http://www.templatemo.com', target='_parent') template mo
     script(src='/bower_components/jquery/dist/jquery.js')  
     script(src='/bower_components/bootstrap/dist/js/bootstrap.js')
     script(src='/js/main.js')  
+    script(src='js/jquery.js')
+    script(src='js/bootstrap.min.js')
+    script(src='js/smoothscroll.js')
+    script(src='js/jquery.nav.js')
+    script(src='js/isotope.js')
+    script(src='js/imagesloaded.min.js')
+    script(src='js/custom.js')

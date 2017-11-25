@@ -1,101 +1,115 @@
 const express = require('express');
 const path = require('path');
-const pug = require('pug');
-
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const expressValidator = require('express-validator');
 const flash = require('connect-flash');
 const session = require('express-session');
+const passport = require('passport');
+const config= require('./config/database');
 
-let Article = require('./models/article');
-mongoose.connect('mongodb://localhost/nodekb');
-let db = mongoose.connection;
+mongoose.connect(config.database);
+const db = mongoose.connection;
 
-//check connection
+
+
+
+//Check for connection
 db.once('open', function(){
-    console.log('connected to MongoDB');
+    console.log('Connected to MongoDB');
 });
-//check for db errors
-db.on('error',function(err){
+
+//Check for DB errors
+db.on('error', function(err){
     console.log(err);
 });
 
-//init app
+//Init app
 const app = express();
 
+//Bring in models
+let Article = require('./models/article');
 
-
-
-//load view engine
+//Load view engine
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
 
-// Body parser middleware application/x-www-form-urlencoded
+// Body Parser Middleware
+//parse application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: false }));
 
 // parse application/json
 app.use(bodyParser.json());
 
-//set public folder
-app.use(express.static(path.join(__dirname,'public')));
+//Set Public folder
+app.use(express.static(path.join(__dirname, 'public')));
 
-
-/*global session*/
-//express session middleware
+//Express Session Middleware
 app.use(session({
   secret: 'keyboard cat',
   resave: true,
-  saveUninitialized: true,
+  saveUninitialized: true
 }));
 
-//express messages middleware
+//Express Messages Middleware
 app.use(require('connect-flash')());
 app.use(function (req, res, next) {
   res.locals.messages = require('express-messages')(req, res);
   next();
 });
 
-//express validator middleware
+//Express Validator Middleware
 app.use(expressValidator({
-errorFormatter: function(param, msg, value) {
-      var namespace = param.split('.')
-      , root    = namespace.shift()
-      , formParam = root;
-
-    while(namespace.length) {
-      formParam += '[' + namespace.shift() + ']';
+    errorFormatter: function(param, msg, value) {
+        var namespace = param.split('.')
+        , root = namespace.shift()
+        , formParam = root;
+        
+        while(namespace.length) {
+            formParam += '[' + namespace.shift() + ']';
+        }
+        return {
+            param : formParam,
+            msg : msg,
+            value : value
+        };
     }
-    return {
-      param : formParam,
-      msg   : msg,
-      value : value
-    };
-  }
 }));
 
+//Passport config
+require('./config/passport')(passport);
+//Passport Middleware
+app.use(passport.initialize());
+app.use(passport.session());
 
-//Home Route
-app.get('/', function(req,res){
-    Article.find({}, function(err, articles){
+app.get('*', function(req, res, next){
+    res.locals.user = req.user || null;
+    next();
+});
+
+//Home route
+app.get('/', function(req, res){
+    Article.find({}, function(err, myprofile){
         if(err){
             console.log(err);
         }else{
-         res.render('index', {
-        title: 'Articles',
-        articles: articles
-      });
-     }
-    });
-});
+        res.render('index', {
+        title:' Portfolio ',
+        myprofile: myprofile
+            });
+        }
+    });    
+}); 
 
-//Routefiles 
-
-let articles = require('./routes/articles');
+//Route files
+let myprofile = require('./routes/myprofile');
 let users = require('./routes/users');
-app.use('/articles',articles);
-app.use('/users',users);
+app.use('/myprofile', myprofile);
+app.use('/users', users);
+
+
+
 //Start server
 app.listen(process.env.PORT, function(){
-    console.log('Example app listening on port 3000!');
+    console.log('Server started  on port 3000!');
 });
