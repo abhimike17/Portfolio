@@ -14,9 +14,9 @@ html(lang='en')
     link(rel='stylesheet', href='css/templatemo-style.css')
     link(href='//fonts.googleapis.com/css?family=Raleway:400,300,600,700', rel='stylesheet', type='text/css')
     //
-  body(class = 'intro_page',data-spy='scroll', data-target='#rock-navigation')
-    // START NAVIGATION
-    .navbar.navbar-default.bs-dos-nav.navbar-fixed-top
+  body(data-spy='scroll', data-target='#rock-navigation')
+  if user
+    .navbar.navbar-default.bs-dos-nav.navbar-fixed-top.sticky-navigation(role='navigation')
       .container
         .navbar-header
           button.navbar-toggle(data-toggle='collapse', data-target='#rock-navigation')
@@ -44,11 +44,21 @@ html(lang='en')
                 a.smoothScroll(href='#contact') Contact
               li
                 a.smoothScroll(href='/users/logout') Logout
-            else
-              li
-                a.smoothScroll(href='/users/signup') SignUp
-              li
-                a.smoothScroll(href='/users/login') Login
+  if !user
+    .navbar.navbar-default.bs-dos-nav.navbar-fixed-top.sticky-navigation(role='navigation')
+      .container
+        .navbar-header
+          button.navbar-toggle(data-toggle='collapse', data-target='#rock-navigation')
+            
+          a.navbar-brand(href='/') Welcome
+        nav#rock-navigation
+          ul.nav.navbar-nav.navbar-right.main-navigation.text-uppercase
+            li
+              a(href='/users/signup') SignUp
+            li
+              a(href='/users/login') Login
+            
+              
     // END NAVIGATION
     // START HOME
   if !user
