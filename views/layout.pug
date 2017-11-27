@@ -24,15 +24,16 @@ html
           span.icon.icon-bar
           span.icon.icon-bar
           span.icon.icon-bar
-        a.navbar-brand(href='/') My Profile
+        a.navbar-brand(href='/') Welcome
       nav#rock-navigation.collapse.navbar-collapse
         #navbar.collapse.navbar-collapse
           ul.nav.navbar-nav
-            li
+             li
               a.smoothScroll(href='/') Home
-            if user
+             if user
               li
-                a.smoothScroll(href='/myprofile/add') Add Article
+                a.smoothScroll(href='/articles/add') Add Article
+            
           ul.nav.navbar-nav.navbar-right
             if user
               li 
@@ -53,7 +54,7 @@ html
       footer
         p Copyright &copy; 2017
         
-              a(rel='nofollow', href='http://www.templatemo.com', target='_parent') template mo
+              
     script(src='/bower_components/jquery/dist/jquery.js')  
     script(src='/bower_components/bootstrap/dist/js/bootstrap.js')
     script(src='/js/main.js')  

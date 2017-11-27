@@ -14,25 +14,23 @@ html(lang='en')
     link(rel='stylesheet', href='css/templatemo-style.css')
     link(href='//fonts.googleapis.com/css?family=Raleway:400,300,600,700', rel='stylesheet', type='text/css')
     //
-      Ultra Profile Template
-      http://www.templatemo.com/tm-464-ultra-profile
-  body(data-spy='scroll', data-target='#rock-navigation')
+  body(class = 'intro_page',data-spy='scroll', data-target='#rock-navigation')
     // START NAVIGATION
-    .navbar.navbar-default.bs-dos-nav.navbar-fixed-top.sticky-navigation(role='navigation')
+    .navbar.navbar-default.bs-dos-nav.navbar-fixed-top
       .container
         .navbar-header
           button.navbar-toggle(data-toggle='collapse', data-target='#rock-navigation')
             span.icon.icon-bar
             span.icon.icon-bar
             span.icon.icon-bar
-          a.navbar-brand(href='/') My Profile
+          a.navbar-brand(href='/') Welcome
         nav#rock-navigation.collapse.navbar-collapse
           ul.nav.navbar-nav.navbar-right.main-navigation.text-uppercase
             li
               a.smoothScroll(href='/') Home
             if user
               li
-                a.smoothScroll(href='/myprofile/add') Add Info
+                a.smoothScroll(href='/articles/add') Add Info
             if user
               li
                 a.smoothScroll(href='#work') My Work
@@ -43,6 +41,8 @@ html(lang='en')
               li
                 a.smoothScroll(href='#about') About
               li
+                a.smoothScroll(href='#contact') Contact
+              li
                 a.smoothScroll(href='/users/logout') Logout
             else
               li
@@ -51,6 +51,17 @@ html(lang='en')
                 a.smoothScroll(href='/users/login') Login
     // END NAVIGATION
     // START HOME
+  if !user
+    section#home.templatemo-home
+      .container
+        .row
+          .col-md-2.col-sm-1
+          .col-md-8.col-sm-10
+            h1.tm-home-title
+              strong SignUp to view my Profile
+            h2.tm-home-subtitle If you are User, Please Login
+
+  if user
     section#home.templatemo-home
       .container
         .row
@@ -60,49 +71,51 @@ html(lang='en')
               strong Abhijeeth Baregal
             h2.tm-home-subtitle FrontEnd Developer
             p
-              | I am a professional 
-              strong UX Designer
+              |I am a Graduate Student at    
+              strong University of Louisiana at Lafayette 
+              |  specializing in 
+              strong Web Applications Dev
               |  and 
-              strong Front-End Developer
-              |  creating modern and responsive designs for 
-              strong Web
-              |  and 
-              strong Mobile
+              strong Embedded Systems
+              | . Accustomed to fast-paced environment, team and individual projects. Reputation for quick Learner 
+              strong 
               | . Let us work together. Thank you.
             a.btn.btn-default.smoothScroll.tm-view-more-btn(href='#work') Let's Begin
           .col-md-2.col-sm-1
     // END HOME
     // START work
+  if user
     section#work.tm-padding-top-bottom-100
       .container
         .row
           .col-md-offset-1.col-md-11
-        if user
             h2.title
               | My 
               strong Work
-        if user
           .col-md-4.col-sm-4
             .work-wrapper
               i.fa.fa-flash
-              h3.text-uppercase.tm-work-h3 Web Design
+              h3.text-uppercase.tm-work-h3 Intern at PIXMINDZ LABS Private Ltd.
               hr
               p
-                | Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet. Dolore magna.
+                | Worked on website development using Ruby on Rails, HTML and CSS
+                | . Developing and maintaining functionalities like users, full login and authentication framework
           .col-md-4.col-sm-4
             .work-wrapper
               i.fa.fa-flash
-              h3.text-uppercase.tm-work-h3 Web Design
+              h3.text-uppercase.tm-work-h3 Project Trainee at Supath Info Technologies Private Ltd.
               hr
               p
-                | Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet. Dolore magna.
+                | Exposed to ‘'MySQL Database'' and worked regarding technical aspects of Data management
+                | Developed an online CV Builder database project with PHP-MySQL database connectivity
           .col-md-4.col-sm-4
             .work-wrapper
               i.fa.fa-dashboard
-              h3.text-uppercase.tm-work-h3 HTML Templates
+              h3.text-uppercase.tm-work-h3 Project Trainee at PIXMINDZ LABS Private Ltd.
               hr
               p
-                | Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet. Dolore magna.
+                | Engaged in Android Operating System and application development
+                | Built a “College Alerts” Android application
     // END work
     // START PORTFOLIO
     section#portfolio.tm-portfolio
@@ -113,77 +126,77 @@ html(lang='en')
             if user
               h2.tm-portfolio-title
                 | My 
-                strong Portfolio
+                strong Projects
             // START ISO SECTION
-          if user
             .iso-section
               ul.filter-wrapper.clearfix
                 li
-                  a.opc-main-bg.selected(href='#', data-filter='*') All
+                  a.opc-main-bg.selected(href='#', data-filter='*') Ruby on Rails
                 li
-                  a.opc-main-bg(href='#', data-filter='.html') HTML
+                  a.opc-main-bg(href='#', data-filter='.html') Programming Languages
                 li
-                  a.opc-main-bg(href='#', data-filter='.photoshop') Photoshop
+                  a.opc-main-bg(href='#', data-filter='.photoshop') Computer Graphics
                 li
-                  a.opc-main-bg(href='#', data-filter='.wordpress') Wordpress
+                  a.opc-main-bg(href='#', data-filter='.wordpress') Embedded systems
                 li
-                  a.opc-main-bg(href='#', data-filter='.mobile') Mobile
+                  a.opc-main-bg(href='#', data-filter='.mobile') Image Processing
               .iso-box-section
                 .iso-box-wrapper.col4-iso-box
                   .iso-box.html.photoshop.wordpress.mobile.col-md-3.col-sm-3.col-xs-12
                     .portfolio-thumb
-                      img.fluid-img(src='images/portfolio-img1.jpg', alt='portfolio img')
+                      img.fluid-img(src='/project/nodekb/images/portfolio-img1.jpg', alt='portfolio img')
                       .portfolio-overlay
-                        h3.portfolio-item-title UX Design
-                        p Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonumm.
+                        h3.portfolio-item-title 
+                        p Project Description
                   .iso-box.html.wordpress.mobile.col-md-3.col-sm-3.col-xs-12
                     .portfolio-thumb
-                      img.fluid-img(src='images/portfolio-img2.jpg', alt='portfolio img')
+                      img.fluid-img(src='/project/nodekb/images/portfolio-img2.jpg', alt='portfolio img')
                       .portfolio-overlay
-                        h3.portfolio-item-title UX Design
-                        p Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonumm.
+                        h3.portfolio-item-title 
+                        p Project Description
                   .iso-box.wordpress.col-md-3.col-sm-3.col-xs-12
                     .portfolio-thumb
-                      img.fluid-img(src='images/portfolio-img3.jpg', alt='portfolio img')
+                      img.fluid-img(src='/project/nodekb/images/portfolio-img3.jpg', alt='portfolio img')
                       .portfolio-overlay
-                        h3.portfolio-item-title UX Design
-                        p Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonumm.
+                        h3.portfolio-item-title 
+                        p Project Description
                   .iso-box.html.mobile.col-md-3.col-sm-3.col-xs-12
                     .portfolio-thumb
-                      img.fluid-img(src='images/portfolio-img4.jpg', alt='portfolio img')
+                      img.fluid-img(src='/project/nodekb/images/portfolio-img4.jpg', alt='portfolio img')
                       .portfolio-overlay
-                        h3.portfolio-item-title UX Design
-                        p Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonumm.
+                        h3.portfolio-item-title 
+                        p Project Description
                   .iso-box.wordpress.col-md-3.col-sm-3.col-xs-12
                     .portfolio-thumb
-                      img.fluid-img(src='images/portfolio-img5.jpg', alt='portfolio img')
+                      img.fluid-img(src='/project/nodekb/images/portfolio-img5.jpg', alt='portfolio img')
                       .portfolio-overlay
-                        h3.portfolio-item-title UX Design
-                        p Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonumm.
+                        h3.portfolio-item-title 
+                        p Project Description
                   .iso-box.html.photoshop.col-md-3.col-sm-3.col-xs-12
                     .portfolio-thumb
-                      img.fluid-img(src='images/portfolio-img6.jpg', alt='portfolio img')
+                      img.fluid-img(src='/project/nodekb/images/portfolio-img6.jpg', alt='portfolio img')
                       .portfolio-overlay
-                        h3.portfolio-item-title UX Design
-                        p Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonumm.
+                        h3.portfolio-item-title 
+                        p Project Description
                   .iso-box.photoshop.col-md-3.col-sm-3.col-xs-12
                     .portfolio-thumb
-                      img.fluid-img(src='images/portfolio-img7.jpg', alt='portfolio img')
+                      img.fluid-img(src='/project/nodekb/images/portfolio-img7.jpg', alt='portfolio img')
                       .portfolio-overlay
-                        h3.portfolio-item-title UX Design
-                        p Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonumm.
+                        h3.portfolio-item-title 
+                        p Project Description
                   .iso-box.wordpress.col-md-3.col-sm-3.col-xs-12
                     .portfolio-thumb
-                      img.fluid-img(src='images/portfolio-img8.jpg', alt='portfolio img')
+                      img.fluid-img(src='/project/nodekb/images/portfolio-img8.jpg', alt='portfolio img')
                       .portfolio-overlay
-                        h3.portfolio-item-title UX Design
-                        p Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonumm.
+                        h3.portfolio-item-title 
+                        p Project Description
     // END PORTFOLIO
     // START RESUME
+  if user  
     section#resume.tm-padding-top-bottom-100
+    
       .container
         .row
-        if user
           .col-md-6.col-sm-6
           
             h2.title
@@ -206,59 +219,57 @@ html(lang='en')
               |  abhijeethbaregal@gmail.com
             p
               span.tm-info-label Website
-              a.tm-red-text(href='#') www.company.com
-        if user
+              a.tm-red-text(href='#') www.myprofile.com
           .col-md-6.col-sm-6
           
             h2.title
               strong Some
               |  Skills
             p
-              | Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet. Dolore magna aliquam erat volutpat.
+              | Description
             h4.tm-progress-label
-              | Bootstrap 
-              small.progress-percent-small 100%
+              | Technologies 
+              small.progress-percent-small 90%
             .progress.tm-progress
               .progress-bar.progress-bar-danger(role='progressbar', aria-valuenow='100', aria-valuemin='0', aria-valuemax='100', style='width: 100%;')
             h4.tm-progress-label
-              | HTML5 
-              small.progress-percent-small 90%
+              | Programming Languages
+              small.progress-percent-small 80%
             .progress.tm-progress
               .progress-bar.progress-bar-danger(role='progressbar', aria-valuenow='90', aria-valuemin='0', aria-valuemax='100', style='width: 90%;')
             h4.tm-progress-label
-              | SEO 
-              small.progress-percent-small 80%
+              | Database
+              small.progress-percent-small 70%
             .progress.tm-progress
               .progress-bar.progress-bar-danger(role='progressbar', aria-valuenow='80', aria-valuemin='0', aria-valuemax='100', style='width: 80%;')
     // END RESUME
     // START ABOUT
     section#about.tm-about
-    if user
       .container
         .row
           .col-md-offset-6.col-md-6.col-sm-offset-6.col-sm-7
             .title
             
               h2
-                | This is 
-                strong me
+                | 
+                strong 
               h1.tm-red-text
-                | Creative 
-                strong Director
+                | This is ABOUT ME
+                strong 
           
             p
-              | This is free Bootstrap v3.3.4 mobile friendly layout from 
-              a(rel='nofollow', href='http://www.templatemo.com', target='_parent') templatemo
-              | . Feel free to use it for your website. Credit goes to 
-              a(rel='nofollow', href='http://pixabay.com', target='_blank') Pixabay
-              |  for photos used in this template. Dolore magna aliquam erat volutpat. Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet.
+              | Description
+              a(rel='nofollow', href='', target='_parent') 
+              | . Description. 
+              a(rel='nofollow', href='', target='_blank') 
+              |  Description
             p
-              | Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet. Dolore magna aliquam erat volutpat.
+              | 
     // END ABOUT
     // START SOCIAL
     section#social.tm-social
       .container
-      if user
+      
         .row
           .col-md-4.col-sm-4.wow.rotateInUpLeft(data-wow-delay='0.3s')
   
@@ -288,8 +299,33 @@ html(lang='en')
                   h4.media-heading.tm-social-title Like me on
                   h3 Social instagram
     // END SOCIAL
-    // START CONTACT
- 
+    if user
+     section#contact.tm-contact
+      .container
+        .row
+          .col-md-12
+            h2.title
+                | Drop     
+                strong me a message
+                
+          .col-md-1.col-sm-1
+          .col-md-10.col-sm-10
+            .contact
+            form(action='send', method='POST', id= 'contactform')
+              .col-md-6.col-sm-6
+                input.form-control(type='text', name = "name", placeholder='Name', id = 'name')
+              .col-md-6.col-sm-6
+                input.form-control(type='email', name = "email",placeholder='Your Email', id ='email')
+              .col-md-12.col-sm-6
+                input.form-control(type='text', name = "company",placeholder='Your Company',id = 'company')
+              .col-md-12.col-sm-6
+                input.form-control(type='text', name = "phone",placeholder='Your Phone', id = 'phone')
+              .col-md-12.col-sm-12    
+                textarea.form-control(name = "message", placeholder='Your Message', rows='6', id = 'message')
+              .col-md-offset-2.col-md-8.col-sm-offset-2.col-sm-8
+          
+                input.form-control(type='submit', value='SEND')
+  
     // END CONTACT
     script(src='js/jquery.js')
     script(src='js/bootstrap.min.js')
@@ -298,3 +334,7 @@ html(lang='en')
     script(src='js/isotope.js')
     script(src='js/imagesloaded.min.js')
     script(src='js/custom.js')
+    script(src='https://www.gstatic.com/firebasejs/4.6.2/firebase.js')
+    script(src='js/main.js')
+    
+    

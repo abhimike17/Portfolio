@@ -39,7 +39,7 @@ router.post('/add', function(req, res){
         return;
       } else {
         req.flash('success','Article Added');
-        res.redirect('/');
+        res.redirect('/articles/save');
       }
     });
   }

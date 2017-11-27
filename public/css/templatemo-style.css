@@ -34,7 +34,8 @@ hr {
 /* START NAVIGATION */
 .sticky-navigation { opacity: 0; }
 .navbar-default {
-  background: #fff;
+  background: #D3D3D3;
+  opacity: 50;
   border: none;
   -webkit-box-shadow: 0 2px 8px 0 rgba(50, 50, 50, 0.08);
           box-shadow: 0 2px 8px 0 rgba(50, 50, 50, 0.08);
@@ -81,7 +82,7 @@ hr {
 
 /* START HOME */
 .templatemo-home {
-  background: url('../images/home-bg.jpg');
+  background: url('/project/nodekb/images/home-bg.jpg');
   background-size: cover;
   background-attachment: fixed;
   background-position: center center;
@@ -324,7 +325,7 @@ hr {
 
 /* START ABOUT */
 .tm-about {
-  background: url('../images/about-bg.jpg');
+  background: url('/project/nodekb/images/about-bg.jpg');
   background-size: cover;
   background-attachment: fixed;
   background-position: center center;
