@@ -1,0 +1,31 @@
+This is a Portfolio web app created using following technologies on cloud9.
+Technologies used 
+•	Node.js 
+•	Express
+        o	express-messages
+        o	session
+        o	connect-flash and 
+        o	validation
+•	MongoDB
+•	Mongoose
+•	Pug template engine
+•	Passport.js authentication
+•	Bcrypt hashing and 
+•	Nodemailer
+ 
+To know more about the project, please check the project report
+
+node version- v8.9.1
+
+Installation
+
+1)Install the dependencies
+$ npm install ... --save
+
+2)Connect to MongodB
+$ ./mongod
+
+3)Start the server
+$ npmstart
+
+4)Run the application app.js

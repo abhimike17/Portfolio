@@ -104,7 +104,7 @@ app.get('/articles/save', function(req, res){
             console.log(err);
         }else{
         res.render('articlesindex', {
-        title:' Add Profile ',
+        title:' Messages ',
         articles: articles
             });
         }
